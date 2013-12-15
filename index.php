@@ -12,7 +12,7 @@
 	<div class="results">
 		<?php 
 
-			echo flexiblefizzbuzz( array(
+			echo flexibleCracklePop( array(
 					'min' => 1,
 					'max' => 100,
 					'template' => '<a class="item-{{item}}" href="audio/{{item}}.mp3">{{item}}</a>',
