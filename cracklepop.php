@@ -1,85 +1,62 @@
 <?php 
 
-// function simplefizzbuzz(){
-// 	$i = 1;
-// 	while ( $i <= 100 ) {
-// 		if ( $i % 15 === 0 ) echo "FizzBuzz";
-// 		else if ( $i % 3 === 0 ) echo "Fizz";
-// 		else if ( $i % 5 === 0 ) echo "Buzz";
-// 		else echo $i;
-// 		echo "<br>";
-// 		$i++;
-// 	}
-// }
-
-// echo simplefizzbuzz();
-
 /**
- * Make numbers fizz and buzz
- *
- * @author  Eric
- * 
- * @link http://en.wikipedia.org/wiki/Fizz_buzz
- * @link http://lmgtfy.com/?q=fizz+buzz
- *       
- * @todo Make good impression
- * 
- * @param  integer $min     The number at which to start
- * @param  integer $max     The number at which to stop
- * @param  array   $options Exciting options hitherto unknown!
- * 
- * @return Nothing to see here.
- * 
+ * A very basic CracklePop.
+ * Everything is hard-coded.
  */
-function fizzbuzz( $options = array() ) {
 
-	// Default options
-	$defaults = array(
-		'min' => 1,
-		'max' => 100,
-		'fizznumber' => 3,
-		'buzznumber' => 5,
-		'fizz' => 'Fizz',
-		'buzz' => 'Buzz',
-		'delimiter' => '<br>'
-	);
-
-	// Merge defaults with the options that were passed in
-	$options = array_merge( $defaults, (array) $options );
-
-	// Set up our loop
-	$count = $options['min'];
-	$results = array();
-
-	// Loop through our series, fizzing and buzzing as necessary
-	while ( $count <= $options['max'] ) {
-
-		$output = "";
-
-		if ( ($count % $options['fizznumber']) === 0 ) 
-			$output .= $options['fizz'];
-
-		if ( ($count % $options['buzznumber']) === 0 ) 
-			$output .= $options['buzz'];
-
-		// Add this item to our results array
-		$results[] = $output ? $output : $count;
-
-		$count++;	
+function simpleCracklePop(){
+	$i = 1;
+	while ( $i <= 100 ) {
+		if ( $i % 15 === 0 ) echo "CracklePop";
+		else if ( $i % 3 === 0 ) echo "Crackle";
+		else if ( $i % 5 === 0 ) echo "Pop";
+		else echo $i;
+		echo "<br>";
+		$i++;
 	}
-
-	// Create our final output 
-	return implode( $options['delimiter'], $results );
-
 }
 
-// echo fizzbuzz();
 
+/**
+ * A better CracklePop function, which lets you customize everything!
+ * 
+ * - the min and max for your count!
+ * 		Default: Count from 1 to 100
+ * 	
+ * - which numbers to Crackle and Pop at, and what text to output!
+ * 		Default: "Crackle" at 3 and "Pop" at 5
+ * 		You can specify any number of magic numbers, and output any string.
+ * 		
+ * - a delimiter to put in between each item!
+ * 		Default: A line break ("\n")
+ * 		Other examples: "<br>", ", "
+ *
+ * - a template to output each item in!
+ * 		Default: No template. Just outputs the item: "{{item}}"
+ * 		Other examples:
+ * 			'Simon says {{item}}'
+ * 				Outputs 'Simon says 1', 'Simon says 2', 'Simon says Crackle', etc.
+ * 			'<img src="{{item}}.gif">'
+ * 				Outputs an image for each item (images sold separately)
+ * 				
+ * @param array $options An array specifying any of these options
+ * 	    - min (int): where to start counting
+ * 	    	Default: 1
+ * 		- max (int): where to stop counting
+ * 			Default: 100
+ * 		- delimiter (string): string to output between items
+ * 			Default: "\n"
+ * 		- template (string): template for each item
+ * 			Use "{{item}}" where the item goes
+ * 			Default: "{{item}}"
+ * 		- magicnumbers (array): a dictionary of the numbers to crackle and pop at, and what to say
+ * 			Default: array( 3 => "Crackle", 5 => "Pop" )
+ * 			
+ * @return string The output of your count
+ */
 
-
-// A FizzBuzz function that lets you specify any number of fizzy numbers
-// Add before and after
-function flexiblefizzbuzz( $options = array() ) {
+function flexibleCracklePop( $options = array() ) {
 
 	// Default options
 	$defaults = array(
@@ -88,8 +65,8 @@ function flexiblefizzbuzz( $options = array() ) {
 		'delimiter' => "\n",
 		'template' => "{{item}}",
 		'magicnumbers' => array(
-			3 => "Fizz",
-			5 => "Buzz",
+			3 => "Crackle",
+			5 => "Pop",
 		)
 	);
 
@@ -112,9 +89,7 @@ function flexiblefizzbuzz( $options = array() ) {
 
 		// Add this item to our results array
 		$item = $output ? $output : $count;
-
 		$results[] = str_replace('{{item}}', $item, $options['template']);
-
 		$count++;
 		
 	}
