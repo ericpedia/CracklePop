@@ -17,30 +17,34 @@ CracklePop
 
 The function takes a single, optional parameter, a multidimensional array of options. These options can be specified:
 
-- **min** `(int)`: where to start counting. Default: `1`
-- **max** `(int)`: where to stop counting. Default: `100`
-- **delimiter** `(string)`: string to output between items. Default: `"\n"`
-- **template** `(string)`: template for each item. Use "{{item}}" where the item goes. Default: `"{{item}}"`
-- **magicnumbers** `(array)`: a dictionary of the numbers to crackle and pop at, and what to say. Default: `array( 3 => "Crackle", 5 => "Pop" )`
+- **min** *(int)*: where to start counting. Default: `1`
+- **max** *(int)*: where to stop counting. Default: `100`
+- **delimiter** *(string)*: string to output between items. Default: `"\n"`
+- **template** *(string)*: template for each item. Use "{{item}}" where the item goes. Default: `"{{item}}"`
+- **magicnumbers** *(array)*: a dictionary of the numbers to crackle and pop at, and what to say. Default: `array( 3 => "Crackle", 5 => "Pop" )`
 
 
 ## Examples
 
 ### With default options
 
-	echo flexibleCracklePop();
+```php
+echo flexibleCracklePop();
+```
 
 ### Using custom options
 
-	// These are in fact the default options
-	echo flexibleCracklePop( array(
-			'min' => 1,
-			'max' => 100,
-			'delimiter' => "\n",
-			'template' => "{{item}}",
-			'magicnumbers' => array(
-				3 => "Crackle",
-				5 => "Pop",
-			)
-		) 
-	);
+```php
+// These are in fact the default options
+echo flexibleCracklePop( array(
+		'min' => 1,
+		'max' => 100,
+		'delimiter' => "\n",
+		'template' => "{{item}}",
+		'magicnumbers' => array(
+			3 => "Crackle",
+			5 => "Pop",
+		)
+	) 
+);
+```
