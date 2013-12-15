@@ -1,0 +1,146 @@
+@import "elements.less";
+
+@color: hsla(360, 0%, 50%, 1);
+
+* { .box-sizing(border-box); }
+
+
+@font-face {
+    font-family: 'whimfont';
+    src: url('fonts/whimfont/whimfont.eot');
+    src: url('fonts/whimfont/whimfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/whimfont/whimfont.woff') format('woff'),
+         url('fonts/whimfont/whimfont.ttf') format('truetype'),
+         url('fonts/whimfont/whimfont.svg#whim_glyphsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+	padding: 2em;
+	padding-bottom: 6em;
+	margin: 0;
+	font-size: 1.4em;
+	background: @color;
+	background-image: url(img/bg1-tb1.png);
+	font-family: 'whimfont', 'Helvetica Neue', Georgia;
+
+	/*perspective: 20;*/
+	/*transform-style: preserve-3d;*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+	/*color: darken(@color, 15%);*/
+}
+
+#main {
+	width: 40em;
+	margin: 0 auto;
+	padding: 4em;
+}
+
+#audioplayer {
+	background-color: darken(@color, 35%);
+	.drop-shadow(0, -1px, 1px, 0.4);
+	padding: 1em;
+	/*height: 100px;*/
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	.autoplay {
+		/*position: absolute;*/
+		/*width: 4em;*/
+		/*left: 0;*/
+		/*top: 0;*/
+		/*bottom: 0;*/
+		cursor: pointer;
+		padding: .5em;
+		background: @color;
+		display: inline-block;
+
+		&:after {
+			content: " \2713"; // checkmark
+			opacity: .2;
+		}
+
+		&:hover {
+			&:after {
+				opacity: .4;
+			}
+		}
+
+
+
+		&.enabled {
+			&:after {
+				opacity: 1;
+			}
+			background: green;
+			color: white;
+		}
+	}
+}
+
+audio {
+	width: 100%;
+}
+
+@alt1: saturate( lighten(@color, 15%), 30% );
+@alt1: darken(@color, 30%);
+
+.results a {
+
+	background-color: @alt1;
+	background-image: url(img/bg1-tw2.png);
+	color: white;
+
+	text-align: center;
+	display: inline-block;
+	.drop-shadow(0, 1px, 2px, 0.4);
+	.text-shadow(0, 1px, 2px, 0.8);
+
+	padding: 1em;
+	margin: 0 1em 1em 0;
+	width: 7em;			
+	
+	text-decoration: none;
+
+	.transition-duration(.6s);
+
+
+	/*.transform( perspective(600px) );*/
+
+
+	&:hover {
+		.transition-duration(.6s);
+		background-color: darken(@alt1, 10%);
+		/*.transform( rotateX(20deg) translateZ( -50% ) perspective(1200px) );*/
+		/*.transform( rotateY(40deg) translateY( -10% ) );*/
+		/*transform-origin: left top;*/
+	}
+
+
+	&.item-CracklePop, 
+	&.item-Crackle,
+	&.item-Pop {
+		// background: hsla(200, 70%, 50%, 1);	
+	}
+
+	&.playing {
+		background-color: orange;
+		color: white;
+		.transition-duration(.6s);
+		.scale(1.2);
+
+		&.item-CracklePop {
+			background: white;
+			color: hsla(0,80%,50%,1);
+			.text-shadow(0,0,0,0);
+			.transform(rotate(360deg), scale(1.4));
+		}
+	}
+}
