@@ -17,6 +17,24 @@
 
 /**
  * A font I made.
+ * 
+ * Process:
+ *
+ * 1. Draw (3x each character)
+ * 2. Scan
+ * 3. Trace in Illustrator
+ * 4. Split into art boards, one for each letter
+ * 5. Export as individual EPS files
+ * 6. Rename files by glyph name 
+ * 		a.eps, A.eps, one.eps, question.eps, ampersand.eps
+ * 		Alternates given stylistic set suffix, e.g.:
+ * 			a.eps, a.ss01.eps, a.ss02.eps, etc.
+ * 7. Drag into Glyphs (http://www.glyphsapp.com/)
+ * 8. Tidy up spacing/sizing
+ * 9. Add OpenType features for contextual alternates
+ * 		http://www.glyphsapp.com/tutorials/features-part-3-advanced-contextual-alternates
+ * 10. Convert to webfont using FontSquirrel Webfont generator
+ *		http://www.fontsquirrel.com/tools/webfont-generator
  */
 @font-face {
     font-family: 'whimfont';
