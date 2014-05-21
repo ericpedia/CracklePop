@@ -74,27 +74,33 @@ function flexibleCracklePop( $options = array() ) {
 	$options = array_merge( $defaults, (array) $options );
 
 	// Set up our loop
-	$count = $options['min'];
+	$currentNumber = $options['min'];
 	$results = array();
 
-	// Loop through our series, fizzing and buzzing as necessary
-	while ( $count <= $options['max'] ) {
+	// Loop through our series, crackling and popping as necessary
+	while ( $currentNumber <= $options['max'] ) {
 
 		$output = "";
 
+		// Check for divisibility by our magic numbers
 		foreach ( $options['magicnumbers'] as $number => $word ) {
-			if ( 0 === ($count % $number) )
+			if ( 0 === ($currentNumber % $number) )
 				$output .= $word;
 		}
 
-		// Add this item to our results array
-		$item = $output ? $output : $count;
-		$results[] = str_replace('{{item}}', $item, $options['template']);
-		$count++;
+		// Output the number if we have nothing else to show
+		$output = $output ? $output : $currentNumber;
+
+		// Apply the template
+		$output = str_replace('{{item}}', $output, $options['template']);
+
+		// Add the output to our results array and continue counting
+		$results[] = $output;
+		$currentNumber++;
 		
 	}
 
-	// Create our final output 
+	// Create the final output 
 	return implode( $options['delimiter'], $results );
 
 }
